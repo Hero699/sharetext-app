@@ -327,8 +327,8 @@ body {
 
 .code-textarea {
   width: 100%;
-  min-height: 350px;
-  max-height: 55vh;
+  min-height: 250px;
+  max-height: 380px;
   background: transparent;
   color: var(--text-main);
   border: none;
@@ -343,8 +343,8 @@ body {
 }
 
 .code-scroll-area {
-  max-height: 60vh;
-  min-height: 250px;
+  max-height: 380px;
+  min-height: 200px;
   overflow-y: auto;
   overflow-x: auto;
   padding: 0.5rem;

@@ -170,7 +170,7 @@ export const CodeViewer: React.FC<CodeViewerProps> = ({
           </pre>
         ) : (
           <pre style={{ margin: 0, padding: 0 }}>
-            <code ref={codeRef} className={`language-${share.language} hljs`}>
+            <code ref={codeRef} className={`language-${share.language} hljs`} style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
               {share.content}
             </code>
           </pre>
