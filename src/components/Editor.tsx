@@ -50,7 +50,7 @@ export const Editor: React.FC<EditorProps> = ({ onShareCreated, onShowToast }) =
   const handleLoadSample = () => {
     setTitle('Welcome to ShareText');
     setLanguage('markdown');
-    setContent(`# Welcome to ShareText! 🚀\n\nShareText is a modern, high-speed text and code sharing platform that runs **indefinitely for free**.\n\n### Features Included:\n* **Markdown Support**: Headers, lists, blockquotes, and tables.\n* **Syntax Highlighting**: Over 30+ programming languages.\n* **Zero Server Overhead**: Snippets are compressed and stored securely.\n* **Instant QR Code**: Share links with mobile devices seamlessly.\n\n\`\`\`javascript\n// Quick code example\nfunction shareAwesomeText(input) {\n  console.log("Sharing text instantly:", input);\n  return { status: 200, success: true };\n}\n\`\`\`\n\nPaste your text or code above to create your share link!`);
+    setContent(`# Welcome to ShareText! 🚀\n\nShareText is a modern, high-speed text and code sharing platform that runs **indefinitely for free**.\n\n### Features Included:\n* **Markdown Support**: Headers, lists, blockquotes, and tables.\n* **Syntax Highlighting**: Over 30+ programming languages.\n* **Zero Server Overhead**: Snippets are compressed and stored securely.\n* **Multi-Format Exports**: Download snippets as .txt, .md, or .json.\n\n\`\`\`javascript\n// Quick code example\nfunction shareAwesomeText(input) {\n  console.log("Sharing text instantly:", input);\n  return { status: 200, success: true };\n}\n\`\`\`\n\nPaste your text or code above to create your share link!`);
     onShowToast('Loaded sample Markdown document');
   };
 

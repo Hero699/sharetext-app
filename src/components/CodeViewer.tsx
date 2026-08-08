@@ -2,20 +2,18 @@ import React, { useEffect, useRef } from 'react';
 import hljs from 'highlight.js';
 import { marked } from 'marked';
 import 'highlight.js/styles/atom-one-dark.css';
-import { Copy, QrCode, FileCode, Check, Globe } from 'lucide-react';
+import { Copy, FileCode, Check, Globe } from 'lucide-react';
 import type { ShareData } from '../lib/shareEngine';
 
 interface CodeViewerProps {
   share: ShareData;
   url: string;
-  onOpenQR: () => void;
   onShowToast: (msg: string) => void;
 }
 
 export const CodeViewer: React.FC<CodeViewerProps> = ({
   share,
   url,
-  onOpenQR,
   onShowToast
 }) => {
   const [viewMode, setViewMode] = React.useState<'formatted' | 'markdown' | 'raw'>(
@@ -142,11 +140,6 @@ export const CodeViewer: React.FC<CodeViewerProps> = ({
               Raw Text
             </button>
           </div>
-
-          <button onClick={onOpenQR} className="btn btn-glass btn-sm" title="Show QR Code">
-            <QrCode size={16} />
-            <span>QR Code</span>
-          </button>
 
           <button onClick={handleCopyUrl} className="btn btn-secondary btn-sm">
             {linkCopied ? <Check size={16} /> : <Globe size={16} />}

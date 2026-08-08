@@ -1,5 +1,5 @@
 import React from 'react';
-import { Zap, ShieldCheck, Code2, QrCode, Download, Clock } from 'lucide-react';
+import { Zap, ShieldCheck, Code2, Lock, Download, Clock } from 'lucide-react';
 
 export const FeatureGrid: React.FC = () => {
   return (
@@ -36,11 +36,11 @@ export const FeatureGrid: React.FC = () => {
 
       <div className="glass-panel feature-card">
         <div className="feature-icon">
-          <QrCode size={22} />
+          <Lock size={22} />
         </div>
-        <h3 className="feature-title">Instant QR Codes</h3>
+        <h3 className="feature-title">Zero Server Overhead</h3>
         <p className="feature-desc">
-          Every share automatically builds a high-definition SVG/PNG QR code for scanning and transferring text to mobile devices.
+          Your content is compressed and stored directly within the URL payload. No central database, no accounts, and zero tracking.
         </p>
       </div>
 

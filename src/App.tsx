@@ -3,7 +3,6 @@ import { Navbar } from './components/Navbar';
 import { Editor } from './components/Editor';
 import { CodeViewer } from './components/CodeViewer';
 import { FeatureGrid } from './components/FeatureGrid';
-import { QRModal } from './components/QRModal';
 import { HistoryDrawer } from './components/HistoryDrawer';
 import { Toast } from './components/Toast';
 import type { ToastMessage } from './components/Toast';
@@ -17,7 +16,6 @@ export function App() {
   const [activeShare, setActiveShare] = useState<ShareData | null>(null);
   const [shareUrl, setShareUrl] = useState<string>('');
   
-  const [isQRModalOpen, setIsQRModalOpen] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
   
   const [history, setHistory] = useState<(ShareData & { url: string })[]>([]);
@@ -98,7 +96,6 @@ export function App() {
           <CodeViewer 
             share={activeShare}
             url={shareUrl}
-            onOpenQR={() => setIsQRModalOpen(true)}
             onShowToast={showToast}
           />
         ) : (
@@ -121,14 +118,6 @@ export function App() {
           </>
         )}
       </main>
-
-      {/* QR Code Modal */}
-      <QRModal 
-        url={shareUrl}
-        isOpen={isQRModalOpen}
-        onClose={() => setIsQRModalOpen(false)}
-        onCopy={() => showToast('Link copied to clipboard!')}
-      />
 
       {/* Local History Drawer */}
       <HistoryDrawer 
