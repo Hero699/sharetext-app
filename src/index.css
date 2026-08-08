@@ -327,7 +327,8 @@ body {
 
 .code-textarea {
   width: 100%;
-  min-height: 400px;
+  min-height: 350px;
+  max-height: 55vh;
   background: transparent;
   color: var(--text-main);
   border: none;
@@ -338,18 +339,21 @@ body {
   line-height: 1.6;
   resize: vertical;
   tab-size: 2;
+  overflow-y: auto;
 }
 
-.code-textarea::placeholder {
-  color: var(--text-dim);
+.code-scroll-area {
+  max-height: 60vh;
+  min-height: 250px;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding: 0.5rem;
 }
 
 /* View Mode & Output Styling */
 .formatted-output {
   padding: 1.5rem;
-  min-height: 300px;
   width: 100%;
-  overflow-x: auto;
 }
 
 .markdown-body {

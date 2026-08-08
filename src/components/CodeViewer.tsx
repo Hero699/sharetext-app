@@ -32,15 +32,39 @@ export const CodeViewer: React.FC<CodeViewerProps> = ({
     }
   }, [share.content, share.language, viewMode]);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(share.content);
+  const copyToClipboard = async (text: string) => {
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+        return true;
+      }
+    } catch {
+      // Fallback to execCommand if clipboard API fails
+    }
+    try {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+      return true;
+    } catch {
+      return false;
+    }
+  };
+
+  const handleCopy = async () => {
+    await copyToClipboard(share.content);
     setCopied(true);
     onShowToast('Text copied to clipboard!');
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const handleCopyUrl = () => {
-    navigator.clipboard.writeText(url);
+  const handleCopyUrl = async () => {
+    await copyToClipboard(url);
     setLinkCopied(true);
     onShowToast('Shareable link copied to clipboard!');
     setTimeout(() => setLinkCopied(false), 2000);
@@ -137,7 +161,7 @@ export const CodeViewer: React.FC<CodeViewerProps> = ({
       </div>
 
       {/* Main Content Render */}
-      <div style={{ padding: '0.5rem' }}>
+      <div className="code-scroll-area">
         {viewMode === 'markdown' ? (
           <div className="formatted-output markdown-body" dangerouslySetInnerHTML={renderMarkdown()} />
         ) : viewMode === 'raw' ? (
